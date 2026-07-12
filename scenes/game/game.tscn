@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bcaxmh3u222f8"]
+
+[ext_resource type="Script" uid="uid://ceth6rx16kyst" path="res://scenes/game/game.gd" id="1_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://dwt1oqqhgopim" path="res://scenes/player/player.tscn" id="2_kelw5"]
+[ext_resource type="Texture2D" uid="uid://bx4h8l4v7j4yr" path="res://assets/brackeys_platformer_assets/sprites/fruit.png" id="3_lfrn8"]
+[ext_resource type="PackedScene" uid="uid://baonqf85ex4wd" path="res://scenes/turret/turret.tscn" id="4_kelw5"]
+
+[node name="Game" type="Node2D" unique_id=1376045426]
+script = ExtResource("1_0sr1o")
+
+[node name="Player" parent="." unique_id=339319936 instance=ExtResource("2_kelw5")]
+position = Vector2(596, 283)
+movement_speed = 100.0
+
+[node name="EnemyObjective" type="Sprite2D" parent="." unique_id=539508198]
+unique_name_in_owner = true
+position = Vector2(597, 317)
+texture = ExtResource("3_lfrn8")
+hframes = 4
+vframes = 4
+
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=389554295]
+wait_time = 0.5
+autostart = true
+
+[node name="SpawnerTop" type="Marker2D" parent="." unique_id=1747037397]
+unique_name_in_owner = true
+position = Vector2(587, 74)
+
+[node name="SpawnerRight" type="Marker2D" parent="." unique_id=425911668]
+unique_name_in_owner = true
+position = Vector2(970, 303)
+
+[node name="SpawnerLeft" type="Marker2D" parent="." unique_id=1270575867]
+unique_name_in_owner = true
+position = Vector2(238, 296)
+
+[node name="SpawnerBottom" type="Marker2D" parent="." unique_id=1531733040]
+unique_name_in_owner = true
+position = Vector2(602, 531)
+
+[node name="Turret" parent="." unique_id=894681361 instance=ExtResource("4_kelw5")]
+position = Vector2(623, 310)
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

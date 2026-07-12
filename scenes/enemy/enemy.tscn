@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cwsdiaywcnysl"]
+
+[ext_resource type="Texture2D" uid="uid://ug2hcltneliv" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_4a83h"]
+[ext_resource type="Script" uid="uid://bh2opsrf8qvuj" path="res://scenes/enemy/enemy.gd" id="1_a3pup"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3pup"]
+atlas = ExtResource("1_4a83h")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40wdo"]
+atlas = ExtResource("1_4a83h")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjssy"]
+atlas = ExtResource("1_4a83h")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl05p"]
+atlas = ExtResource("1_4a83h")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwlon"]
+atlas = ExtResource("1_4a83h")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nbhyu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3pup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40wdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjssy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl05p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwlon")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13gj6"]
+radius = 6.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=259715442]
+collision_layer = 0
+script = ExtResource("1_a3pup")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=627659640]
+sprite_frames = SubResource("SpriteFrames_nbhyu")
+frame = 1
+frame_progress = 0.19267891
+
+[node name="EnemyArea" type="Area2D" parent="." unique_id=133306236 groups=["enemy"]]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea" unique_id=1114477240]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_13gj6")
+
+[connection signal="area_entered" from="EnemyArea" to="." method="_on_enemy_area_area_entered"]

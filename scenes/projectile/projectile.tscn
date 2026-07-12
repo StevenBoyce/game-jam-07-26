@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cc3bg2gmfjtbk"]
+
+[ext_resource type="Script" uid="uid://di4jncddkkro7" path="res://scenes/projectile/projectile.gd" id="1_2dulq"]
+[ext_resource type="Texture2D" uid="uid://ciavdnoc7taw4" path="res://assets/brackeys_platformer_assets/sprites/coin.png" id="1_t8015"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2dulq"]
+radius = 5.0
+
+[node name="Projectile" type="CharacterBody2D" unique_id=273300858]
+script = ExtResource("1_2dulq")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1468411081]
+texture = ExtResource("1_t8015")
+hframes = 12
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=902801601]
+autostart = true
+
+[node name="PlayerProjectileArea" type="Area2D" parent="." unique_id=1776584254 groups=["player_projectile"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerProjectileArea" unique_id=1359838028]
+shape = SubResource("CircleShape2D_2dulq")
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
