@@ -47,4 +47,4 @@ func _input(event: InputEvent) -> void:
 func spawn_turret():
 	var turret = turret_scene.instantiate()
 	turret.position = global_position
-	get_tree().root.add_child(turret)
+	get_parent().add_child(turret)
