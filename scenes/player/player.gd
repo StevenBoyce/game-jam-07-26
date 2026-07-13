@@ -32,13 +32,14 @@ func _physics_process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
-		var mouse_position = get_global_mouse_position()
-		# print(mouse_position)
-		var projectile = projectile_scene.instantiate()
-		projectile.direction = global_position.direction_to(mouse_position)
-		projectile.spawn_position = spawn_position.global_position
-		projectile.spawn_rotation = global_position.direction_to(mouse_position).angle()
-		get_tree().root.add_child(projectile)
+		if GameState.player_current_ammo > 0:
+			var mouse_position = get_global_mouse_position()
+			var projectile = projectile_scene.instantiate()
+			projectile.direction = global_position.direction_to(mouse_position)
+			projectile.spawn_position = spawn_position.global_position
+			projectile.spawn_rotation = global_position.direction_to(mouse_position).angle()
+			get_tree().root.add_child(projectile)
+			GameState.update_player_ammo(-1)
 	if event.is_action_pressed("secondary_action"):
 		spawn_turret()
 

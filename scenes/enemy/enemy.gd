@@ -13,6 +13,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_enemy_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player_projectile"):
+		GameState.update_enemies_remaining(-1)
 		area.get_parent().queue_free()
 		queue_free()
 	pass # Replace with function body.

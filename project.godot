@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="game-jam-07-26"
-run/main_scene="uid://bcaxmh3u222f8"
+run/main_scene="uid://cuicptknta5ml"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Events="*uid://dcmgdima72buj"
+GameState="*uid://cvoo04wbqcchs"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

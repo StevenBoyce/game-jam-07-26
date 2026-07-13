@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cie70n6hhsjs5"]
+
+[ext_resource type="Script" uid="uid://85s3o301p834" path="res://scenes/ui/shop/shop.gd" id="1_m7afx"]
+
+[node name="Shop" type="Control" unique_id=1743418688]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m7afx")
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1578554637]
+layout_mode = 0
+offset_right = 178.0
+offset_bottom = 58.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1783182651]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=356673675]
+layout_mode = 2
+text = "You survived the wave!"
+
+[node name="NextWaveButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=152889016]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Next Wave"

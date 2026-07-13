@@ -8,6 +8,7 @@ radius = 5.0
 
 [node name="Projectile" type="CharacterBody2D" unique_id=273300858]
 script = ExtResource("1_2dulq")
+speed = 500
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1468411081]
 texture = ExtResource("1_t8015")
