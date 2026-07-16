@@ -60,3 +60,5 @@ func on_prize_acquired():
 func receive_prize():
 	i_have_prize = true
 	escape_direction = world_boundary.get_escape_direction(global_position)
+	set_deferred("collision_layer", 5)
+	set_deferred("collision_mask", 5)
