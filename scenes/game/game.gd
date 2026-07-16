@@ -66,7 +66,7 @@ func _on_spawn_point_timeout(spawn_point: Marker2D) -> void:
 func _spawn_enemy_at(spawn_point: Marker2D) -> void:
 	var enemy = enemy_scene.instantiate()
 	enemy.world_boundary = world_boundary
-	enemy.target = the_prize
+	enemy.target = the_prize if the_prize != null else GameState.player
 	enemy.position = spawn_point.global_position
 	add_child(enemy)
 
