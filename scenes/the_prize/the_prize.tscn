@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dwotjocq63tbs"]
+
+[ext_resource type="Texture2D" uid="uid://bx4h8l4v7j4yr" path="res://assets/brackeys_platformer_assets/sprites/fruit.png" id="1_k6rn0"]
+[ext_resource type="Script" uid="uid://conedq5430h78" path="res://scenes/the_prize/the_prize.gd" id="1_qbchb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kelw5"]
+radius = 23.086792
+
+[node name="ThePrize" type="Area2D" unique_id=131563547]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_qbchb")
+
+[node name="EnemyObjective" type="Sprite2D" parent="." unique_id=1853807413]
+position = Vector2(1, 3)
+texture = ExtResource("1_k6rn0")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1817493688]
+position = Vector2(1, 4)
+shape = SubResource("CircleShape2D_kelw5")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

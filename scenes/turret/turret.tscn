@@ -2,12 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://c2syeewact48c" path="res://assets/Cannon.png" id="1_i6dxt"]
 [ext_resource type="Script" uid="uid://g8e4kjeqjn7x" path="res://scenes/turret/turret.gd" id="1_rmqmx"]
+[ext_resource type="Script" uid="uid://dhlxrryuwrkk6" path="res://scripts/composition_pieces/shooter.gd" id="2_xfx51"]
+
+[sub_resource type="Resource" id="Resource_m8ak0"]
+script = ExtResource("2_xfx51")
+base_attack_cooldown = 5.0
+metadata/_custom_type_script = "uid://dhlxrryuwrkk6"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6dxt"]
 radius = 107.05606
 
 [node name="Turret" type="Node2D" unique_id=894681361]
 script = ExtResource("1_rmqmx")
+shooter_stats = SubResource("Resource_m8ak0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=721868366]
 rotation = 1.5707964

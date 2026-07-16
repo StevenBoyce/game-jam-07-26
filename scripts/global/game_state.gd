@@ -1,6 +1,7 @@
 extends Node
 
 @export var shop_scene: PackedScene = preload("res://scenes/ui/shop/shop.tscn")
+@export var game_over_scene: PackedScene = preload("res://scenes/ui/game_over/game_over.tscn")
 
 @export var base_player_damage: int = 1
 @export var base_player_attack_speed: float = 1.0
@@ -22,10 +23,28 @@ var turret_max_ammo: int = base_turret_max_ammo
 var turret_charges: int = base_turret_charges
 var wave_number: int = 1
 var enemies_remaining: int = 0
+var enemy_with_prize: Enemy = null
+var player: Player = null
+var the_prize: ThePrize = null
 
 signal player_ammo_changed(new_ammo: int)
 signal enemies_remaining_changed(new_enemies_remaining: int)
 signal wave_number_changed(new_wave_number: int)
+signal enemy_reached_prize()
+signal clear_enemy_with_prize()
+signal game_over()
+signal spawn_prize_at(position: Vector2)
+
+func _on_clear_enemy_with_prize():
+    enemy_with_prize = null
+    clear_enemy_with_prize.emit()
+
+func update_enemy_with_prize(enemy: Enemy):
+    if not enemy_with_prize:
+        enemy_with_prize = enemy
+        enemy.receive_prize()
+        enemy_reached_prize.emit()
+    return
 
 func update_player_ammo(change_in_ammo: int):
     player_current_ammo = player_current_ammo + change_in_ammo
@@ -48,3 +67,6 @@ func set_wave_time_remaining(new_wave_time_remaining: int):
 func increment_wave_number():
     wave_number += 1
     emit_signal("wave_number_changed", wave_number)
+
+func _on_game_over() -> void:
+    Events.change_scene.emit(game_over_scene)

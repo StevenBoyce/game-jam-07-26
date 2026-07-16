@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite
 var projectile_scene: PackedScene = preload("res://scenes/projectile/projectile.tscn")
@@ -7,6 +8,11 @@ var direction: Vector2
 @onready var turret_scene: PackedScene = preload("res://scenes/turret/turret.tscn")
 @export var movement_speed: float = 300.0
 
+func _ready() -> void:
+	GameState.player = self
+
+func _exit_tree() -> void:
+	GameState.player = null
 
 func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.

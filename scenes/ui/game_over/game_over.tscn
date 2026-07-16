@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b5n4y3ske815p"]
+
+[ext_resource type="Script" uid="uid://b0epx0uo8570a" path="res://scenes/ui/game_over/game_over.gd" id="1_pv8tt"]
+
+[node name="GameOver" type="Control" unique_id=1097695028]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pv8tt")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1870231455]
+layout_mode = 0
+offset_right = 178.0
+offset_bottom = 58.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1293133677]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1783819366]
+layout_mode = 2
+text = "Game Over :( Score: one million"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1844414049]
+layout_mode = 2
+
+[node name="Retry" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1085348236]
+layout_mode = 2
+text = "Retry"
+
+[node name="MainMenu" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=68480004]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=205325687]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
